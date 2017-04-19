@@ -20,7 +20,7 @@ spec:
         ports:
         - name: prom-node-exp
           #^ must be an IANA_SVC_NAME (at most 15 characters, ..)
-          containerPort: 9100
+          containerPort: 39100
           hostPort: 39100
       hostNetwork: true
       hostPID: true
@@ -39,7 +39,7 @@ spec:
   clusterIP: None
   ports:
     - name: prometheus-node-exporter
-      port: 9100
+      port: 39100
       protocol: TCP
   selector:
     app: prometheus
