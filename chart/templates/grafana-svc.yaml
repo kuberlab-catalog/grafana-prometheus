@@ -1,18 +1,8 @@
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: grafana
-spec:
-  backend:
-    serviceName: grafana
-    servicePort: 3000
----
 apiVersion: v1
 kind: Service
 metadata:
   name: grafana
-  namespace: monitoring
   labels:
     app: grafana
     component: core
@@ -20,8 +10,7 @@ spec:
   type: NodePort
   ports:
     - port: 3000
-      nodePort: 3000
-      protocol: TCP
+      nodePort: 30000
   selector:
     app: grafana
     component: core

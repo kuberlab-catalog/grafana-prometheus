@@ -27,9 +27,9 @@ spec:
       containers:
       - name: grafana-import-dashboards
         image: giantswarm/tiny-tools
+        imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         workingDir: /opt/grafana-import-dashboards
-        imagePullPolicy: Always
         args:
           - >
             for file in *-datasource.json ; do
