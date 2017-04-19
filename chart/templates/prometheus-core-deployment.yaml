@@ -35,7 +35,16 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/prometheus
+        - name: prometheus-storage
+          mountPath: /prometheus
       volumes:
       - name: config-volume
         configMap:
           name: prometheus-core
+      - name: prometheus-storage
+        emptyDir: {}
+        #hostPath:
+          #path: /srv/prometheus
+        #nfs:
+          #server: 185.19.29.253
+          #path: /export/prometheus

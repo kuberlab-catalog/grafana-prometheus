@@ -17,10 +17,10 @@ metadata:
     app: grafana
     component: core
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 3000
-      targetPort: 3000
+      nodePort: 3000
       protocol: TCP
   selector:
     app: grafana

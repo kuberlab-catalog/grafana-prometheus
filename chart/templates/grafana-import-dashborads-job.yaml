@@ -28,6 +28,7 @@ spec:
         image: giantswarm/tiny-tools
         command: ["/bin/sh", "-c"]
         workingDir: /opt/grafana-import-dashboards
+        imagePullPolicy: Always
         args:
           - >
             for file in *-datasource.json ; do
