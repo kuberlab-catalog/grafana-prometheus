@@ -43,5 +43,9 @@ spec:
           defaultMode: 420
           name: prometheus-core
       - name: data
+        {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: prometheus-storage
+        {{- else }}
+        emptyDir: {}
+        {{- end }}
