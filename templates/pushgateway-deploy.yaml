@@ -1,0 +1,44 @@
+{{- if .Values.pushGateway.enabled }}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prometheus-push
+  labels:
+    app: prometheus
+    component: push
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: prometheus-push
+      labels:
+        app: prometheus
+        component: push
+    spec:
+      containers:
+      - name: prometheus
+        image: quay.io/prometheus/pushgateway:master
+        args:
+          - '-persistence.file=/prometheus/data'
+        ports:
+        - name: api
+          containerPort: 9091
+        resources:
+          requests:
+            cpu: 200m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
+        volumeMounts:
+        - name: data
+          mountPath: /prometheus
+      volumes:
+      - name: data
+        {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: prometheus-push
+        {{- else }}
+        emptyDir: {}
+        {{- end }}
+{{- end }}

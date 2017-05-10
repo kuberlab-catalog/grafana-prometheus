@@ -5,3 +5,5 @@ persistence:
   size:
     prometheus: 10Gi
     grafana: 1Gi
+pushGateway:
+  enabled: true

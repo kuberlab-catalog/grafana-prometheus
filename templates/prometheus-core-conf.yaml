@@ -95,6 +95,15 @@ data:
           - source_labels: [__meta_kubernetes_pod_name]
             action: replace
             target_label: kubernetes_pod_name
+      {{- if .Values.pushGateway.enabled }}
+      - job_name: 'pushgateway'
+        honor_labels: true
+        static_configs:
+          - targets:
+            - 'prometheus-push:9091'
+            labels:
+              - source: 'prometheus-push-gateway'
+      {{- end }}
 kind: ConfigMap
 metadata:
   name: prometheus-core
