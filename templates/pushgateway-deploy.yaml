@@ -20,6 +20,7 @@ spec:
         image: quay.io/prometheus/pushgateway:master
         args:
           - '-persistence.file=/prometheus/data'
+          - '-persistence.interval=1m'
         ports:
         - name: api
           containerPort: 9091
