@@ -98,6 +98,7 @@ data:
       {{- if .Values.pushGateway.enabled }}
       - job_name: 'pushgateway'
         honor_labels: true
+        scrape_interval: 10s
         static_configs:
           - targets:
             - 'prometheus-push:9091'
