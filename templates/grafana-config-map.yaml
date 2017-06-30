@@ -746,7 +746,8 @@ data:
             "value": "null"
           }],
           "valueName": "current"
-        }, {
+        },
+        {
           "cacheTimeout": null,
           "colorBackground": false,
           "colorValue": true,

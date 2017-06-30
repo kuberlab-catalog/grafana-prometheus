@@ -7,3 +7,4 @@ persistence:
     grafana: 1Gi
 pushGateway:
   enabled: true
+  exportGPU: false

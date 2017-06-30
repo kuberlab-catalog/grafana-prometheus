@@ -1,0 +1,42 @@
+{{- if and .Values.pushGateway.enabled .Values.pushGateway.exportGPU }}
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: gpu-exporter
+  labels:
+    app: prometheus
+    component: gpu-exporter
+spec:
+  template:
+    metadata:
+      name: gpu-exporter
+      labels:
+        app: prometheus
+        component: gpu-exporter
+      annotations:
+        experimental.kubernetes.io/nvidia-gpu-driver: "http://127.0.0.1:3476/v1.0/docker/cli/json"
+    spec:
+      containers:
+      - name: gpu-exporter
+        image: kuberlab/gpu-monitoring:latest
+        env:
+          - name: ONLY_EXPORT_GPU
+            value: "true"
+          - name: KUBERLAB_GPU
+            value: "all"
+          - name: JOB_NAME
+            value: "gpu-monitoring"
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: PUSH_GATEWAY
+            value: "prometheus-push:9091"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
+{{- end }}
