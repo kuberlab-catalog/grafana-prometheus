@@ -2580,7 +2580,7 @@ data:
                 {
                   "expr": "sum(gpu_gpu_util{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}}"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
