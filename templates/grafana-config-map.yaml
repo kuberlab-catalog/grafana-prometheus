@@ -2502,9 +2502,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_memory_used{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name)",
+                  "expr": "sum(gpu_memory_used{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }}"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2578,9 +2578,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_gpu_util{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name)",
+                  "expr": "sum(gpu_gpu_util{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }}"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}}"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2654,9 +2654,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_powerdraw{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name)",
+                  "expr": "sum(gpu_powerdraw{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }}"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
