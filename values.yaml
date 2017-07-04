@@ -1,5 +1,5 @@
 persistence:
-  enabled: true
+  enabled: false
   storageClass: anything
   accessMode: ReadWriteOnce
   size:
@@ -7,4 +7,4 @@ persistence:
     grafana: 1Gi
 pushGateway:
   enabled: true
-  exportGPU: false
+  exportGPU: true
