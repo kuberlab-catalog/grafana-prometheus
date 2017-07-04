@@ -2023,7 +2023,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "sum(avg(gpu_memory_used{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)) / sum(gpu_memory_total{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"})",
+                  "expr": "sum(avg(gpu_memory_used{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)) / sum(avg(gpu_memory_total{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance))",
                   "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "",
