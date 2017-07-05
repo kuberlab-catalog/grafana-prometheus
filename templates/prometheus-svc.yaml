@@ -5,8 +5,8 @@ metadata:
   labels:
     app: prometheus
     component: core
-  #annotations:
-  #  prometheus.io/scrape: 'true'
+  annotations:
+    prometheus.io/scrape: 'true'
 spec:
   ports:
     - port: 9090
