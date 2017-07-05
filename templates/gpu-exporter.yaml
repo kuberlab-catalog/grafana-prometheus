@@ -1,4 +1,4 @@
-{{- if and .Values.pushGateway.enabled .Values.pushGateway.exportGPU }}
+{{- if .Values.exportGPU }}
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -14,6 +14,8 @@ spec:
         app: prometheus
         component: gpu-exporter
       annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8082'
         experimental.kubernetes.io/nvidia-gpu-driver: "http://127.0.0.1:3476/v1.0/docker/cli/json"
     spec:
       containers:
@@ -43,6 +45,8 @@ spec:
         volumeMounts:
         - name: docker
           mountPath: /var/run/docker.sock
+        ports:
+        - containerPort: 8082
       volumes:
       - name: docker
         hostPath:

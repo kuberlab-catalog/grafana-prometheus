@@ -1829,7 +1829,7 @@ data:
       "links": [],
       "gnetId": 737
     }
-  #{{- if and .Values.pushGateway.enabled .Values.pushGateway.exportGPU }}
+  {{- if .Values.exportGPU }}
   grafana-net-738-dashboard.json: |
     {
     "__inputs": [{
@@ -2023,7 +2023,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "sum(avg(gpu_memory_used{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)) / sum(avg(gpu_memory_total{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance))",
+                  "expr": "sum(avg(gpu_memory_used{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)) / sum(avg(gpu_memory_total{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance))",
                   "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "",
@@ -2105,7 +2105,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "avg( sum (avg(gpu_gpu_util{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)) by (instance))",
+                  "expr": "avg( sum (avg(gpu_gpu_util{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)) by (instance))",
                   "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "",
@@ -2189,7 +2189,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "sum (avg(gpu_memory_used{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance))",
+                  "expr": "sum (avg(gpu_memory_used{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance))",
                   "interval": "10s",
                   "intervalFactor": 1,
                   "legendFormat": "",
@@ -2271,7 +2271,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "sum (avg(gpu_memory_total{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance))",
+                  "expr": "sum (avg(gpu_memory_total{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance))",
                   "interval": "10s",
                   "intervalFactor": 1,
                   "legendFormat": "",
@@ -2353,7 +2353,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "sum (avg(gpu_gpu_util{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance))",
+                  "expr": "sum (avg(gpu_gpu_util{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance))",
                   "interval": "10s",
                   "intervalFactor": 1,
                   "legendFormat": "",
@@ -2435,7 +2435,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "count (avg(gpu_gpu_util{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance))",
+                  "expr": "count (avg(gpu_gpu_util{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance))",
                   "interval": "10s",
                   "intervalFactor": 1,
                   "legendFormat": "",
@@ -2502,9 +2502,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_memory_used{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
+                  "expr": "sum(gpu_memory_used{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}})"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2578,9 +2578,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_gpu_util{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
+                  "expr": "sum(gpu_gpu_util{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}})"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2654,9 +2654,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_powerdraw{job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
+                  "expr": "sum(gpu_powerdraw{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{instance}}, {{gpu}})"}}",
+                  "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2742,9 +2742,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "avg(gpu_gpu_util{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)",
+                  "expr": "avg(gpu_gpu_util{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ instance }} ({{ gpu }})"}}",
+                  "legendFormat": "{{"{{ exported_instance }} ({{ gpu }})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2818,9 +2818,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "avg(gpu_memory_used{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)",
+                  "expr": "avg(gpu_memory_used{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ instance }} ({{ gpu }})"}}",
+                  "legendFormat": "{{"{{ exported_instance }} ({{ gpu }})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2895,9 +2895,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "avg(gpu_powerdraw{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)",
+                  "expr": "avg(gpu_powerdraw{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ instance }} ({{ gpu }})"}}",
+                  "legendFormat": "{{"{{ exported_instance }} ({{ gpu }})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2972,9 +2972,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "avg(gpu_temp{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)",
+                  "expr": "avg(gpu_temp{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ instance }} ({{ gpu }})"}}",
+                  "legendFormat": "{{"{{ exported_instance }} ({{ gpu }})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -3049,9 +3049,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "avg(gpu_fanspeed{job=\"gpu-monitoring\",instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, instance)",
+                  "expr": "avg(gpu_fanspeed{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ instance }} ({{ gpu }})"}}",
+                  "legendFormat": "{{"{{ exported_instance }} ({{ gpu }})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -3103,7 +3103,7 @@ data:
         }
       ]
     }
-  #{{- end }}
+  {{- end }}
   prometheus-datasource.json: |
     {
       "name": "prometheus",

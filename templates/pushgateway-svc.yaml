@@ -6,8 +6,6 @@ metadata:
   labels:
     app: prometheus
     component: push
-  annotations:
-    prometheus.io/scrape: 'true'
 spec:
   ports:
     - port: 9091

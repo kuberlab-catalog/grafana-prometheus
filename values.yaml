@@ -5,6 +5,6 @@ persistence:
   size:
     prometheus: 10Gi
     grafana: 1Gi
+exportGPU: false
 pushGateway:
   enabled: true
-  exportGPU: false
