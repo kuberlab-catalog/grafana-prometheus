@@ -1,0 +1,9 @@
+{{- if .Values.RBAC }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus-sa
+  namespace: kuberlab
+  labels:
+    app: prometheus
+{{ -end }}
