@@ -5,4 +5,4 @@ metadata:
   name: prometheus-sa
   labels:
     app: prometheus
-{{ -end }}
+{{- end }}
