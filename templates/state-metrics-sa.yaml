@@ -1,0 +1,8 @@
+{{- if .Values.RBAC }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kube-state-metrics
+  namespace: kuberlab
+{{- end }}

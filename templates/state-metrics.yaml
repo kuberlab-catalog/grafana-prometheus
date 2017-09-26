@@ -8,10 +8,13 @@ spec:
     metadata:
       labels:
         app: kube-state-metrics
-        version: "v0.3.0"
+        version: "v1.0.1"
     spec:
+      {{- if .Values.RBAC }}
+      serviceAccountName: kube-state-metrics
+      {{- end }}
       containers:
       - name: kube-state-metrics
-        image: gcr.io/google_containers/kube-state-metrics:v0.3.0
+        image: gcr.io/google_containers/kube-state-metrics:v1.0.1
         ports:
         - containerPort: 8080
