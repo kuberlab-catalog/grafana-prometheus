@@ -11,5 +11,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: kube-state-metrics
-  namespace: kuberlab
+  namespace: {{ .Release.Namespace }}
 {{- end }}
