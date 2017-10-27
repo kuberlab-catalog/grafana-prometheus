@@ -1762,7 +1762,7 @@ data:
         "title": "each pod"
       }],
       "time": {
-        "from": "now-3d",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {
@@ -1878,7 +1878,7 @@ data:
       "sharedCrosshair": false,
       "hideControls": false,
       "time": {
-        "from": "now-3h",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {
