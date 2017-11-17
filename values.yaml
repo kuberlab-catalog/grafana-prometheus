@@ -8,4 +8,4 @@ persistence:
 exportGPU: false
 pushGateway:
   enabled: true
-RBAC: false
+RBAC: true
