@@ -8,8 +8,8 @@ metadata:
     volume.alpha.kubernetes.io/storage-class: {{ .Values.grafana.persistence.storageClass | quote }}
     {{- end }}
 spec:
-#  {{- if .Values.persistence.storageClass }}
-#  storageClassName: {{ .Values.persistence.storageClass | quote }}
+#  {{- if .Values.grafana.persistence.storageClass }}
+#  storageClassName: {{ .Values.grafana.persistence.storageClass | quote }}
 #  {{- end }}
   accessModes:
     - {{ .Values.grafana.persistence.accessMode | quote }}
