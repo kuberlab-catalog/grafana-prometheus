@@ -39,7 +39,7 @@ spec:
           mountPath: /var/lib/grafana
       volumes:
       - name: grafana-persistent-storage
-        {{- if .Values.persistence.enabled }}
+        {{- if .Values.grafana.persistence.enabled }}
         persistentVolumeClaim:
           claimName: grafana-storage
         {{- else }}

@@ -1,10 +1,17 @@
-persistence:
-  enabled: true
-  storageClass: anything
-  accessMode: ReadWriteOnce
-  size:
-    prometheus: 10Gi
-    grafana: 1Gi
+grafana:
+  persistence:
+    enabled: true
+    storageClass: anything
+    accessMode: ReadWriteOnce
+    size: 1Gi
+
+prometheus:
+  persistence:
+    enabled: true
+    storageClass: anything
+    accessMode: ReadWriteOnce
+    size: 10Gi
+
 exportGPU: true
 pushGateway:
   enabled: true
