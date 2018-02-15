@@ -3,14 +3,10 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: prometheus-storage
-  annotations:
-    {{- if .Values.prometheus.persistence.storageClass }}
-    volume.alpha.kubernetes.io/storage-class: {{ .Values.prometheus.persistence.storageClass | quote }}
-    {{- end }}
 spec:
-#  {{- if .Values.prometheus.persistence.storageClass }}
-#  storageClassName: {{ .Values.prometheus.persistence.storageClass | quote }}
-#  {{- end }}
+  {{- if .Values.prometheus.persistence.storageClass }}
+  storageClassName: {{ .Values.prometheus.persistence.storageClass | quote }}
+  {{- end }}
   accessModes:
     - {{ .Values.prometheus.persistence.accessMode | quote }}
   resources:

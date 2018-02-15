@@ -1,14 +1,14 @@
 grafana:
   persistence:
     enabled: true
-    storageClass: anything
+    #storageClass: anything
     accessMode: ReadWriteOnce
     size: 1Gi
 
 prometheus:
   persistence:
     enabled: true
-    storageClass: anything
+    #storageClass: anything
     accessMode: ReadWriteOnce
     size: 10Gi
 
