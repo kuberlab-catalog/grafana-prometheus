@@ -3,11 +3,11 @@ grafana:
     enabled: true
     #storageClass: anything
     accessMode: ReadWriteOnce
-    size: 1Gi
+    size: 4Gi
 
 prometheus:
   persistence:
-    enabled: false
+    enabled: true
     #storageClass: anything
     accessMode: ReadWriteOnce
     size: 10Gi
