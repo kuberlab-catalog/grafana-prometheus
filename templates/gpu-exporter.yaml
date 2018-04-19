@@ -19,6 +19,10 @@ spec:
     spec:
       containers:
       - name: gpu-exporter
+        securityContext:
+          privileged: true
+          capabilities:
+           add: ["SYS_ADMIN"]
         image: kuberlab/gpu-monitoring:latest
         env:
           - name: ONLY_EXPORT_GPU
