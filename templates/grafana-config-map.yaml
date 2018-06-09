@@ -2105,7 +2105,7 @@ data:
               },
               "targets": [
                 {
-                  "expr": "avg( sum (avg(gpu_gpu_util{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)) by (instance))",
+                  "expr": "avg( sum (avg(gpu_gpu_util{exported_job=\"gpu-monitoring\",exported_instance=~\"^$instance$\",gpu=~\"^$gpu$\"}) by (gpu, exported_instance)) by (exported_instance))",
                   "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "",
@@ -2502,7 +2502,7 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_memory_used{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
+                  "expr": "sum(gpu_memory_used{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name, exported_instance, gpu)",
                   "intervalFactor": 2,
                   "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
@@ -2578,7 +2578,7 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_gpu_util{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
+                  "expr": "sum(gpu_gpu_util{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name, exported_instance, gpu)",
                   "intervalFactor": 2,
                   "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
@@ -2654,7 +2654,7 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_powerdraw{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name) keep_common",
+                  "expr": "sum(gpu_powerdraw{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name, exported_instance, gpu)",
                   "intervalFactor": 2,
                   "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
