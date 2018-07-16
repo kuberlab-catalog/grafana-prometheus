@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: quay.io/prometheus/pushgateway:v0.4.0
+        image: prom/pushgateway:v0.5.2
         args:
-          - '-persistence.file=/prometheus/data'
-          - '-persistence.interval=5s'
+          - '--persistence.file=/prometheus/data'
+          - '--persistence.interval=5s'
         ports:
         - name: api
           containerPort: 9091
