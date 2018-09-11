@@ -14,6 +14,12 @@ spec:
         app: prometheus
         component: core
     spec:
+      {{- if .Values.nodeSelector.enabled }}
+      nodeSelector:
+      {{- range $key, $value := .Values.nodeSelector.labels }}
+        {{ $key }}: "{{ $value }}"
+      {{- end }}
+      {{- end }}
       securityContext:
         runAsUser: 0
       {{- if .Values.RBAC }}

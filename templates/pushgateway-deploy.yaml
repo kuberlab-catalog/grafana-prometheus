@@ -15,6 +15,12 @@ spec:
         app: prometheus
         component: push
     spec:
+      {{- if .Values.nodeSelector.enabled }}
+      nodeSelector:
+      {{- range $key, $value := .Values.nodeSelector.labels }}
+        {{ $key }}: "{{ $value }}"
+      {{- end }}
+      {{- end }}
       containers:
       - name: prometheus
         image: prom/pushgateway:v0.5.2

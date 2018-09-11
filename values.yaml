@@ -23,6 +23,11 @@ prometheus:
       hostPath:
         path: /path
 
+nodeSelector:
+  enabled: false
+  labels:
+    monitoring: monitoring
+
 exportGPU: true
 pushGateway:
   enabled: true

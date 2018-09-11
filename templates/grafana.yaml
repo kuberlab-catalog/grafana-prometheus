@@ -13,6 +13,12 @@ spec:
         app: grafana
         component: core
     spec:
+      {{- if .Values.nodeSelector.enabled }}
+      nodeSelector:
+      {{- range $key, $value := .Values.nodeSelector.labels }}
+        {{ $key }}: "{{ $value }}"
+      {{- end }}
+      {{- end }}
       containers:
       - image: grafana/grafana:4.0.2
         name: grafana-core
