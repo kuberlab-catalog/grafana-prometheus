@@ -1,16 +1,27 @@
 grafana:
   persistence:
     enabled: true
+    fromProvider: true
     #storageClass: anything
     accessMode: ReadWriteOnce
     size: 4Gi
+    volume:
+      hostPath:
+        path: /path
 
 prometheus:
   persistence:
     enabled: true
+    fromProvider: true
     #storageClass: anything
     accessMode: ReadWriteOnce
     size: 10Gi
+    volume:
+      hostPath:
+        path: /path
+    pushVolume:
+      hostPath:
+        path: /path
 
 exportGPU: true
 pushGateway:

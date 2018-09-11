@@ -40,8 +40,12 @@ spec:
       volumes:
       - name: grafana-persistent-storage
         {{- if .Values.grafana.persistence.enabled }}
+        {{- if .Values.grafana.persistence.fromProvider }}
         persistentVolumeClaim:
           claimName: grafana-storage
+        {{- else }}
+{{ toYaml .Values.grafana.persistence.volume | indent 8 }}
+        {{- end }}
         {{- else }}
         emptyDir: {}
         {{- end }}

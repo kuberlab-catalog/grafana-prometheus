@@ -49,8 +49,12 @@ spec:
           name: prometheus-core
       - name: data
         {{- if .Values.prometheus.persistence.enabled }}
+        {{- if .Values.prometheus.persistence.fromProvider }}
         persistentVolumeClaim:
           claimName: prometheus-storage
+        {{- else }}
+{{ toYaml .Values.prometheus.persistence.volume | indent 8 }}
+        {{- end }}
         {{- else }}
         emptyDir: {}
         {{- end }}

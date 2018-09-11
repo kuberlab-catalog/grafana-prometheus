@@ -37,8 +37,12 @@ spec:
       volumes:
       - name: data
         {{- if .Values.prometheus.persistence.enabled }}
+        {{- if .Values.prometheus.persistence.fromProvider }}
         persistentVolumeClaim:
           claimName: prometheus-push
+        {{- else }}
+{{ toYaml .Values.prometheus.persistence.pushVolume | indent 8 }}
+        {{- end }}
         {{- else }}
         emptyDir: {}
         {{- end }}
