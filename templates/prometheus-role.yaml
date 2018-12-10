@@ -9,6 +9,7 @@ rules:
 - apiGroups:
   - ""
   resources:
+  - nodes/proxy
   - pods
   - services
   - nodes

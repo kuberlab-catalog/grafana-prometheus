@@ -23,7 +23,7 @@ spec:
       {{- end }}
       containers:
       - name: prometheus
-        image: prom/pushgateway:v0.5.2
+        image: prom/pushgateway:v0.6.0
         args:
           - '--persistence.file=/prometheus/data'
           - '--persistence.interval=5s'
