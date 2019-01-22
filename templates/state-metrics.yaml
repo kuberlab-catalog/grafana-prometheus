@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: kube-state-metrics-deployment
+  name: kube-state-metrics
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: kube-state-metrics
-        version: "v1.0.1"
+        version: "v1.4.0"
     spec:
       {{- if .Values.RBAC }}
       serviceAccountName: kube-state-metrics
