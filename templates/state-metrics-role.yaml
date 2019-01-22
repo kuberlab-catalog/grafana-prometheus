@@ -3,7 +3,7 @@
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
 metadata:
-  name: kube-state-metrics
+  name: {{ .Release.Namespace }}-kube-state-metrics
 rules:
 - apiGroups: [""]
   resources:
