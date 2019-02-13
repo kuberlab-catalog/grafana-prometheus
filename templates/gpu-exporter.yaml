@@ -17,6 +17,10 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8082'
     spec:
+      tolerations:
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        operator: Exists
       containers:
       - name: gpu-exporter
         securityContext:
