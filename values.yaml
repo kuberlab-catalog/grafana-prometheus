@@ -1,12 +1,12 @@
 grafana:
+  # Need to set appropriate root URL for kibernetika proxy
+  rootUrl: "root_url"
   persistence:
     enabled: true
     fromProvider: true
     #storageClass: anything
     accessMode: ReadWriteOnce
     size: 4Gi
-    # Need to set appropriate root URL for kibernetika proxy
-    rootUrl: ""
     volume:
       hostPath:
         path: /path
