@@ -5,6 +5,8 @@ grafana:
     #storageClass: anything
     accessMode: ReadWriteOnce
     size: 4Gi
+    # Need to set appropriate root URL for kibernetika proxy
+    rootUrl: ""
     volume:
       hostPath:
         path: /path
