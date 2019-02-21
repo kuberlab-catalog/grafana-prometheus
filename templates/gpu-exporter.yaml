@@ -27,7 +27,7 @@ spec:
           privileged: true
           capabilities:
            add: ["SYS_ADMIN"]
-        image: kuberlab/gpu-monitoring:latest
+        image: '{{ printf "%s:%s" .Values.gpuExporter.Image.Name .Values.gpuExporter.Image.Tag}}'
         env:
           - name: ONLY_EXPORT_GPU
             value: "true"

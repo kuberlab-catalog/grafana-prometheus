@@ -31,6 +31,10 @@ nodeSelector:
     monitoring: monitoring
 
 exportGPU: true
+gpuExporter:
+  Image:
+    Name: kuberlab/gpu-monitoring
+    Tag: latest
 pushGateway:
   enabled: true
 RBAC: true
