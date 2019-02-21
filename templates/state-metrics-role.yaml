@@ -7,26 +7,54 @@ metadata:
 rules:
 - apiGroups: [""]
   resources:
-  - nodes
-  - persistentvolumeclaims
-  - pods
-  - pods/status
-  - services
-  - resourcequotas
-  - replicationcontrollers
-  - limitranges
-  - namespaces
+    - namespaces
+    - nodes
+    - persistentvolumeclaims
+    - pods
+    - services
+    - resourcequotas
+    - replicationcontrollers
+    - limitranges
+    - persistentvolumeclaims
+    - persistentvolumes
+    - endpoints
+    - secrets
+    - configmaps
   verbs: ["list", "watch"]
 - apiGroups: ["extensions", "apps"]
   resources:
-  - daemonsets
-  - deployments
-  - replicasets
-  - statefulsets
+    - daemonsets
+    - deployments
+    - replicasets
+    - statefulsets
   verbs: ["list", "watch"]
-- apiGroups: ["batch"]
+- apiGroups: ["apps"]
   resources:
-  - cronjobs
-  - jobs
-  verbs: ["list", "watch"]
+    - statefulsets
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups:
+    - batch
+  resources:
+    - cronjobs
+    - jobs
+  verbs:
+    - list
+    - watch
+- apiGroups:
+    - autoscaling
+  resources:
+    - horizontalpodautoscalers
+  verbs:
+    - list
+    - watch
+- apiGroups:
+    - policy
+  resources:
+    - poddisruptionbudgets
+  verbs:
+    - list
+    - watch
 {{- end }}
