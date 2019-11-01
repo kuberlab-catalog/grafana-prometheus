@@ -57,5 +57,5 @@ spec:
       volumes:
       - name: docker
         hostPath:
-          path: /var/run/docker.sock
+          path: {{ .Values.gpuExporter.dockerSocket }}
 {{- end }}

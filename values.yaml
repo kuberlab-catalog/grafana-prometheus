@@ -35,6 +35,7 @@ gpuExporter:
   Image:
     Name: kuberlab/gpu-monitoring
     Tag: latest
+  dockerSocket: /var/run/docker.sock
 pushGateway:
   enabled: true
 RBAC: true
