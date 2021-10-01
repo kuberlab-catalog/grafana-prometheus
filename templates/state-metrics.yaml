@@ -2,7 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kube-state-metrics
+  labels:
+    app: kube-state-metrics
+    version: "v1.4.0"
 spec:
+  selector:
+    matchLabels:
+      app: kube-state-metrics
+      version: "v1.4.0"
   replicas: 1
   template:
     metadata:

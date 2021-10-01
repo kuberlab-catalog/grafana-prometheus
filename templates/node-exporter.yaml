@@ -6,6 +6,10 @@ metadata:
     app: prometheus
     component: node-exporter
 spec:
+  selector:
+    matchLabels:
+      app: prometheus
+      component: node-exporter
   template:
     metadata:
       name: prometheus-node-exporter

@@ -7,6 +7,10 @@ metadata:
     app: prometheus
     component: push
 spec:
+  selector:
+    matchLabels:
+      app: prometheus
+      component: push
   replicas: 1
   template:
     metadata:

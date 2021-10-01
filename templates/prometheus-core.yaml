@@ -6,6 +6,10 @@ metadata:
     app: prometheus
     component: core
 spec:
+  selector:
+    matchLabels:
+      app: prometheus
+      component: core
   replicas: 1
   template:
     metadata:
