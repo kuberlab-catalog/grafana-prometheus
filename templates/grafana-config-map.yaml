@@ -1469,10 +1469,10 @@ data:
           "stack": false,
           "steppedLine": false,
           "targets": [{
-            "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod_name)",
+            "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod)",
             "interval": "",
             "intervalFactor": 2,
-            "legendFormat": "{{"{{ pod_name }}"}}",
+            "legendFormat": "{{"{{ pod }}"}}",
             "metric": "container_cpu",
             "refId": "A",
             "step": 240
@@ -1551,10 +1551,10 @@ data:
           "stack": false,
           "steppedLine": false,
           "targets": [{
-            "expr": "sum (container_memory_working_set_bytes{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}) by (pod_name)",
+            "expr": "sum (container_memory_working_set_bytes{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}) by (pod)",
             "interval": "",
             "intervalFactor": 2,
-            "legendFormat": "{{"{{ pod_name }}"}}",
+            "legendFormat": "{{"{{ pod }}"}}",
             "metric": "",
             "refId": "A",
             "step": 240
@@ -1632,18 +1632,18 @@ data:
           "stack": false,
           "steppedLine": false,
           "targets": [{
-            "expr": "sum (rate (container_network_receive_bytes_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod_name)",
+            "expr": "sum (rate (container_network_receive_bytes_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod)",
             "interval": "",
             "intervalFactor": 2,
-            "legendFormat": "{{"{{ pod_name }}"}} < in",
+            "legendFormat": "{{"{{ pod }}"}} < in",
             "metric": "network",
             "refId": "A",
             "step": 240
           }, {
-            "expr": "- sum (rate (container_network_transmit_bytes_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod_name)",
+            "expr": "- sum (rate (container_network_transmit_bytes_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod)",
             "interval": "",
             "intervalFactor": 2,
-            "legendFormat": "{{"{{ pod_name }}"}} > out",
+            "legendFormat": "{{"{{ pod }}"}} > out",
             "metric": "network",
             "refId": "B",
             "step": 240
@@ -1721,10 +1721,10 @@ data:
           "stack": false,
           "steppedLine": false,
           "targets": [{
-            "expr": "sum(container_fs_usage_bytes{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}) by (pod_name)",
+            "expr": "sum(container_fs_usage_bytes{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}) by (pod)",
             "interval": "",
             "intervalFactor": 2,
-            "legendFormat": "{{"{{ pod_name }}"}}",
+            "legendFormat": "{{"{{ pod }}"}}",
             "metric": "network",
             "refId": "A",
             "step": 240
@@ -2502,9 +2502,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_memory_used{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name, exported_instance, gpu)",
+                  "expr": "sum(gpu_memory_used{exported_job=\"gpu-monitoring\", pod=~\".+\"}) by (pod, exported_instance, gpu)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
+                  "legendFormat": "{{"{{ pod }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2578,9 +2578,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_gpu_util{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name, exported_instance, gpu)",
+                  "expr": "sum(gpu_gpu_util{exported_job=\"gpu-monitoring\", pod=~\".+\"}) by (pod, exported_instance, gpu)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
+                  "legendFormat": "{{"{{ pod }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
@@ -2654,9 +2654,9 @@ data:
               "steppedLine": true,
               "targets": [
                 {
-                  "expr": "sum(gpu_powerdraw{exported_job=\"gpu-monitoring\", pod_name=~\".+\"}) by (pod_name, exported_instance, gpu)",
+                  "expr": "sum(gpu_powerdraw{exported_job=\"gpu-monitoring\", pod=~\".+\"}) by (pod, exported_instance, gpu)",
                   "intervalFactor": 2,
-                  "legendFormat": "{{"{{ pod_name }} ({{exported_instance}}, {{gpu}})"}}",
+                  "legendFormat": "{{"{{ pod }} ({{exported_instance}}, {{gpu}})"}}",
                   "refId": "A",
                   "step": 20
                 }
