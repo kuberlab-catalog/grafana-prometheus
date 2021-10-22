@@ -1,6 +1,6 @@
 name: grafana-prometheus
 description: Deploy monitoring stuff - grafana and prometheus.
-version: 2.6.1
+version: 2.6.2
 home: https://k8s.io/helm
 keywords:
  - monitoring
